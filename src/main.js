@@ -49,12 +49,12 @@ async function loadMore() {
 }
 
 async function fetchImages(pag, searchQuery) {
-  if (page !== 1) {
-    iziToast.show({
-      message: 'PLease wait, pictures are loading...',
-      position: 'topRight',
-    });
-  }
+  // if (page !== 1) {
+  //   iziToast.show({
+  //     message: 'PLease wait, pictures are loading...',
+  //     position: 'topRight',
+  //   });
+  // }
 
   const params = new URLSearchParams({
     key: KEY,
@@ -73,7 +73,7 @@ async function fetchImages(pag, searchQuery) {
       iziToast.show({
         message:
           'Sorry, there are no images matching your search query. Please try again!',
-          position: "topRight",
+        position: 'topRight',
       });
       return;
     }
@@ -100,6 +100,7 @@ async function makeCards(response) {
       }) => {
         return `<a href="${largeImageURL}"><div class="photo-card">
   <img class="image" src="${webformatURL}" alt="${tags}" loading="lazy" />
+  <span class="loader"></span>
   <div class="info">
     <p class="info-item">
       <b>Likes</b><br>${likes}
@@ -114,11 +115,16 @@ async function makeCards(response) {
       <b>Downloads</b><br>${downloads}
     </p>
   </div>
-</div></a>`;
+  </div></a>`;
       }
     )
     .join('');
   refs.gallery.innerHTML += markup;
+
+  refs.images = document.querySelectorAll('.image');
+  [...refs.images].map(image => {
+    image.addEventListener('load', onLoad(image));
+  });
 
   const { height: cardHeight } =
     refs.gallery.firstElementChild.getBoundingClientRect();
@@ -129,15 +135,12 @@ async function makeCards(response) {
   });
 
   refs.loadBtn.classList.remove('hidden');
+
   let simplelightbox = new SimpleLightbox('.gallery a', {});
   simplelightbox.refresh();
+ 
 }
 
-const { height: cardHeight } = document
-  .querySelector('.gallery')
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight / 2,
-  behavior: 'smooth',
-});
+ function onLoad(image) {
+    image.nextElementSibling.style.display = 'none';
+  }
