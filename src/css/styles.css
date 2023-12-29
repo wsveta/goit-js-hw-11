@@ -89,15 +89,16 @@ header {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  gap: 20px;
-  padding: 70px;
+  gap: 30px;
+  padding: 15px;
+  justify-content: center;
 }
 
 .gallery a {
   border-radius: 20px;
   box-shadow: 0px 0px 20px 0px rgba(18, 27, 33, 0.204);
   overflow: hidden;
-  flex-basis: calc((100% - 40px) / 3);
+  width: 350px;
 }
 .image {
   height: 350px;
@@ -108,19 +109,6 @@ header {
   display: flex;
   gap: 20px;
   justify-content: center;
-}
-
-.load-more {
-  height: 66px;
-  padding: 0 30px;
-  font-size: 20px;
-  flex-shrink: 0;
-  border-radius: 56px;
-  border: 1px solid #edeef0;
-  background: #fdfdfd;
-  box-shadow: 0px 2px 20px 0px rgba(18, 27, 33, 0.204);
-  margin-bottom: 150px;
-  transition: all 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .load-more:hover {
@@ -140,14 +128,13 @@ header {
   position: relative;
 }
 .loader {
+  position: absolute;
   width: 48px;
   height: 48px;
-  position: absolute;
-  border: 5px solid #646464;
+  border: 5px solid #acacac;
   border-bottom-color: transparent;
   top: 40%;
-  left: 40%;
-  transform: translate(-50%, -50%);
+  left: 45%;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
