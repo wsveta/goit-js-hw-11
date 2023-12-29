@@ -44,12 +44,13 @@ header {
 
 .input-container {
   position: relative;
+  display: inline-block;
 }
 .input-container::after {
   position: absolute;
   content: url(../img/search.svg);
   right: 20px;
-  top: 50%;
+  top: 55%;
   transform: translateY(-50%);
   transition: filter 500ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
@@ -62,7 +63,7 @@ header {
 .search-button {
   position: absolute;
   right: 14px;
-  top: 50%;
+  top: 0;
   width: 50px;
   height: 50px;
   border: transparent;
@@ -132,6 +133,7 @@ header {
   width: 48px;
   height: 48px;
   border: 5px solid #acacac;
+  border-radius: 50px;
   border-bottom-color: transparent;
   top: 40%;
   left: 45%;

@@ -101,6 +101,7 @@ function makeCards(response) {
     image.addEventListener('load', event => event.target.nextElementSibling.style.display = 'none')
   );
 
+
   const { height: cardHeight } =
     refs.gallery.firstElementChild.getBoundingClientRect();
 

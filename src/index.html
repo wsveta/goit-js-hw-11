@@ -8,7 +8,21 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load ="partials/header.html" />
+    <header>
+      <h1 class="hero-title">What are you looking for today?</h1>
+      <form class="search-form" id="search-form">
+        <div class="input-container">
+          <input
+            class="input-form"
+            type="text"
+            name="searchQuery"
+            autocomplete="off"
+            placeholder="Search images..."
+          />
+          <button class="search-button" type="submit"></button>
+        </div>
+      </form>
+    </header>
     <main>
       <div class="container">
         <div class="gallery"></div>
