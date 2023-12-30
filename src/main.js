@@ -98,9 +98,15 @@ function makeCards(response) {
   refs.gallery.innerHTML += markup;
   refs.images = document.querySelectorAll('.image');
   [...refs.images].map(image =>
-    image.addEventListener('load', event => event.target.nextElementSibling.style.display = 'none')
-  );
+    image.addEventListener('load', event => {
+      const loader = event.target.nextElementSibling;
+      loader.classList.add('loader-hidden');
 
+      loader.addEventListener('transitionend', () => {
+        loader.remove();
+      });
+    })
+  );
 
   const { height: cardHeight } =
     refs.gallery.firstElementChild.getBoundingClientRect();
